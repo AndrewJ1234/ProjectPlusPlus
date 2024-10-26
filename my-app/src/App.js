@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Login />
+      {/* <Login /> */}
       <button onClick={toggleModal}>Login</button> {/* Button to open the modal */}
       {isModalOpen && <Login toggle={toggleModal} />} {/* Only render Login when modal is open */}
       {/* <button onClick={togglePop}>Login</button> */}

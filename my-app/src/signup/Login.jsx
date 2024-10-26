@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
-import userIcon from './Assets/person.png';
-import emailIcon from './Assets/email.png';
-import passwordIcon from './Assets/password.png';
 import Modal from 'react-modal';
 import axios from 'axios';
-
-
 
 function Login(props) {
     const [action, setAction] = useState("Login");
@@ -16,24 +11,28 @@ function Login(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        const endpoint = action === "Sign Up" ? '/api/users' : '/api/login'; // Adjusted to use /api/users for sign-up
-        const data = action === "Sign Up" ? { username, email, password } : { email, password };
-    
+
+        const endpoint = action === "Sign Up" 
+            ? 'http://localhost:4000/db/users' 
+            : 'http://localhost:4000/db/login';
+        const data = action === "Sign Up" 
+            ? { username, email, password } 
+            : { email, password };
+
         try {
-            const response = await axios.post(endpoint, data);
-            console.log(response.data.message); // Handle success (e.g., show message)
-            props.toggle(); // Close the modal after submission
+            const response = await axios.post(endpoint, data, {
+                headers: { "Content-Type": "application/json" }
+            });
+            console.log(response.data.message); 
+            if (props.toggle) props.toggle(); // Ensure toggle exists before calling it
         } catch (error) {
-            // Check if error.response exists
             if (error.response) {
-                console.error('Error:', error.response.data.message); // Handle error if response is defined
+                console.error('Error:', error.response.data.message);
             } else {
-                console.error('Error:', error.message); // Handle unexpected errors (e.g., network issues)
+                console.error('Error:', error.message);
             }
         }
     };
-    
 
     return (
         <Modal 
