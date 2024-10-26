@@ -1,8 +1,4 @@
-import mongoose, { mongo } from "mongoose";
-import {User} from './models/User.js';
-import {Project} from './models/Project.js';
-
-mongoose.connect('mongodb://127.0.0.1/buildathon');
+import {User} from '../models/User.js';
 
 
 const CreateUser = (user) => {
@@ -36,7 +32,7 @@ const DeleteUser = (username) => {
 }
 
 
-const DeleteAll = () => {
+const DeleteAllUsers = () => {
     return User.deleteMany({})
 }
 
@@ -60,6 +56,6 @@ export {
     GetUser,
     UpdateUser,
     DeleteUser,
-    DeleteAll,
-    LoginUser
+    LoginUser,
+    DeleteAllUsers
 };
