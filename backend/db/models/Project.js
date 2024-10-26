@@ -1,15 +1,16 @@
 import mongoose from "mongoose";
 
 const ProjectSchema = new mongoose.Schema({
-    // required fields
-    owner_username: {
+    // unique fields
+    name: {
         type: String,
-        required: "User can't be empty",
+        unique: true,
     },
 
-    owner_contact: {
-        type: String,
-        required: "Contact can't be empty",
+    // required fields
+    username: {
+        type: String, // match with users
+        required: "User can't be empty",
     },
 
     description: {
