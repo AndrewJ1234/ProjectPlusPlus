@@ -39,6 +39,18 @@ db.get('/users/:username/delete', async (req, res) => {
     res.redirect('/db/users');
 })
 
+// login function called
+db.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await controller.LoginUser(email, password);
+        res.send({ message: 'Login successful', user }); // Send back user data if needed
+    } catch (error) {
+        res.status(401).send({ message: error.message }); // Unauthorized
+    }
+});
+
 
 // Project routes
 db.post('/projects', async (req, res) => {

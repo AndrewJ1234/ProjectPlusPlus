@@ -14,7 +14,6 @@ server.use((req, res, next) => {
     next();
 })
 
-
     //routes
 // db interface
 server.use('/db', db);
