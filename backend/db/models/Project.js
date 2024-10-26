@@ -4,7 +4,9 @@ const ProjectSchema = new mongoose.Schema({
     // unique fields
     name: {
         type: String,
+        index: true,
         unique: true,
+        required: "Name can't be empty",
     },
 
     // required fields
