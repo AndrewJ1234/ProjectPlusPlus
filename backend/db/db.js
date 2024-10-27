@@ -44,7 +44,7 @@ db.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await controller.LoginUser(email, password);
+        const user = await User.findOne({email: {$eq: email}, password: {$eq: password}});
         res.send({ message: 'Login successful', user }); // Send back user data if needed
     } catch (error) {
         res.status(401).send({ message: error.message }); // Unauthorized
