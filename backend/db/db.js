@@ -2,8 +2,8 @@ import mongoose, { mongo } from "mongoose";
 import { User } from './models/User.js';
 import { Project } from './models/Project.js';
 import express from "express";
-
 mongoose.connect('mongodb://127.0.0.1/buildathon');
+
 
 const db = express.Router();
 
@@ -44,7 +44,14 @@ db.post('/login', async (req, res) => {
 
     try {
         const user = await User.findOne({email: {$eq: email}, password: {$eq: password}});
-        res.send({ message: 'Login successful', user }); // Send back user data if needed
+        // console.log(user); 
+        if (user === null){
+            res.status(400).send("User does not exist");
+        }
+        else{
+            res.send({ message: 'Login successful', user }); // Send back user data if needed
+        }
+        
     } catch (error) {
         res.status(401).send({ message: error.message }); // Unauthorized
     }

@@ -2,8 +2,10 @@ import "dotenv/config";
 import express from "express";
 import { db } from './db/db.js';
 import { search } from './search.js';
+import cors from 'cors'
 
 const server = express();
+server.use(cors());
 
     // middleware
 // express.json()
@@ -11,6 +13,7 @@ server.use(express.json()); // should parse all bodies
 // logger
 server.use((req, res, next) => {
     console.log(Date.now(), req.path, req.method, req.query, req.params, req.body);
+    res.setHeader("Content-Type", "application/json");
     next();
 })
 
