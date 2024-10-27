@@ -4,8 +4,9 @@ const UserSchema = new mongoose.Schema({
     // unique fields
     username: {
         type: String,
-        required: "Username can't be empty",
+        index: true,
         unique: true,
+        required: "Username can't be empty",
     },
     
     email: { // validate?
@@ -20,30 +21,38 @@ const UserSchema = new mongoose.Schema({
         required: "Password can't be empty",
     },
     
-    // extra fields
     linkedin: {
         type: String,
+        default: "",
+        unique: true,
     },
 
     github: {
         type: String,
+        default: "",
+        unique: true,
     },
-
+    
+    // extra fields
     experience: { // lowkey a problem
         type: Object,
+        default: {},
+        sparse: true,
     },
 
     interests: {
         type: Object,
+        default: {},
     },
 
     projects: {
-        type: Object,
+        type: Array,
+        default: [],
     },
 
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
 })
 
