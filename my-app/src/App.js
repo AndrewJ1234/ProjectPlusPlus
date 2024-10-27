@@ -31,13 +31,13 @@ function App() {
       {isModalOpen && <Login toggle={toggleModal} />} {/* Only render Login when modal is open */}
       {/* <button onClick={togglePop}>Login</button> */}
       {/* {seen ? <Login toggle={togglePop} /> : null} */}
-      {/* <div className="container">
+      <div className="container">
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/projectsubmission" element={<ProjectSubmissions />}/>
         <Route path="/projects" element={<Home />}/>
       </Routes>
-    </div> */}
+    </div>
     </>
   );
 }
