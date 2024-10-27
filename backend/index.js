@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
-import {db} from './db/db.js';
-
+import { db } from './db/db.js';
+import { search } from './search.js';
 
 const server = express();
 
@@ -16,9 +16,9 @@ server.use((req, res, next) => {
 
     //routes
 // db interface
-server.use('/db', db);
-
-
+server.use('/', db); //
+// post search
+server.use('/search', search);
 
 const PORT = process.env.PORT_EXPRESS || 4000;
 server.listen(PORT, () => {

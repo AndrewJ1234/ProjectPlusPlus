@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
     // extra fields
     experience: { // lowkey a problem
         type: Object,
-        default: {},
+        default: {"Python": 0, "Java": 0, "C/C++": 0, "Javascript": 0, "Rust": 0, "Go": 0},
         sparse: true,
     },
 

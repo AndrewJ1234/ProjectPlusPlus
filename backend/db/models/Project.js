@@ -20,17 +20,15 @@ const ProjectSchema = new mongoose.Schema({
         required: "Description can't be empty",
     },
 
-    experience: {
-        type: Object,
-        default: {},
-    },
-
     link: {
         type: String,
-        required: "Source code can't be empty",
+        required: "Link can't be empty",
     },
 
-    // optional fields
+    experience: {
+        type: Object,
+        default: {"Python": 0, "Java": 0, "C/C++": 0, "Javascript": 0, "Rust": 0, "Go": 0},
+    },
 
 })
 
