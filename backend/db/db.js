@@ -44,8 +44,6 @@ db.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await UserController.LoginUser(email, password);
-
         const user = await User.findOne({email: {$eq: email}, password: {$eq: password}});
       
         res.send({ message: 'Login successful', user }); // Send back user data if needed
